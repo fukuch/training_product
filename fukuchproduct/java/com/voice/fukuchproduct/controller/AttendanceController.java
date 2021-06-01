@@ -61,7 +61,7 @@ public class AttendanceController {
 	}*/
 		@GetMapping("/attendances/{attendanceId}")
 		public String show(@PathVariable Long attendanceId, Model model) {
-			Object[] attendance = service.findByInnerJoin(attendanceId);
+			Object attendance = service.findByInnerJoin(attendanceId);
 			System.out.println(attendance);
 			model.addAttribute("attendance",attendance);
 			return "show_attendance";

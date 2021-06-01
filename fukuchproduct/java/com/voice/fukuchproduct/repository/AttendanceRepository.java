@@ -17,5 +17,5 @@ public interface AttendanceRepository extends JpaRepository<Attendance,Long>{
 	public List<Object[]> find();
 	
 	@Query(value="SELECT attendance_id,attendance.member_id,name,work_division,date,punch_in,punch_out,break_time,attendance.remarks FROM attendance INNER JOIN member ON attendance.member_id = member.member_id AND attendance.attendance_id=?1",nativeQuery = true)
-	public Object[] findOne(Long attendanceId);
+	public Object findOne(Long attendanceId);
 }
