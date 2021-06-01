@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>社員情報@登録</title>
+<meta name="viewport"content="initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link href="../css/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/app.min.css" rel="stylesheet" type="text/css" />
+<link href="../plugins/bootstrap-datepicker/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+</head>
+<h1>　社員情報@登録</h1>
+
+<body style="padding-top: 7rem">
+
+    <!-- NAVBAR -->
+<nav class="navbar bg-info navbar-expand fixed-top">
+      <div class="navbar-brand d-none d-lg-block">
+        <a href="#"><i class="material-icons big white">home</i></a>
+      </div>
+      <div class="container-fluid p-0">
+        <button id="tour-fullwidth" type="button" class="btn btn-default btn-toggle-fullwidth"><i class="material-icons big white"></i></button>
+        <div id="navbar-menu">
+             <ul class="nav navbar-nav align-items-center">
+
+ 			<li class="nav-item">
+            	<a class="nav-link menu" href="/members/new">　【社員情報】登録　</a>
+            </li>   
+            
+            <li class="nav-item">
+            	<a class="nav-link menu" href="/attendances/new">　【勤怠情報】登録　</a>
+            </li>      
+          
+            <li class="nav-item">
+            	<a class="nav-link menu" href="/members">　社員リスト　</a>
+            </li>
+            
+			<li class="nav-item">
+            	<a class="nav-link menu" href="/attendances">　勤怠リスト　</a>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </nav>
+    <!-- END NAVBAR -->
+<br>
+<br>
+<!-- SUBMIT TICKETS -->
+              <div class="card col-sm-7 container-fluid">
+                <div class="card-header">
+                  <h2 class="card-title">記入例に従って入力してください</h2>
+                </div>
+                <div class="card-body">
+                <form th:action="@{/members/new}" th:method="post">
+                 
+                      
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">名前</label>
+                          <input type="text" class="form-control-lg col-sm-7" name="name" placeholder="山田太郎">
+                      </div>
+                      
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">ふりがな</label>
+                          <input type="text" class="form-control-lg col-sm-7" name="nameKana" placeholder="やまだたろう">
+                      </div>
+                      
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">性別</label>
+                          <select name="sex" class="form-control-lg col-sm-7" >
+                            <option value="0">性別</option>
+                            <option value="男">男性</option>
+                            <option value="女">女性</option>
+                          </select>
+                      </div>
+
+                     <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">生年月日</label>
+                          <input type="date" class="form-control-lg col-sm-7" name="birthday" >
+                      </div>
+
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">役職</label>
+                          <input type="text" class="form-control-lg col-sm-7" name="position" placeholder="役職">
+                      </div>
+
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">入社日</label>
+                          <input type="date" class="form-control-lg col-sm-7" name="joiningDay" >
+                      </div>
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">郵便番号</label>
+                          <input type="text" class="form-control-lg col-sm-7" name="zipcode" placeholder="163-8001">
+                      </div>
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">住所</label>
+                          <textarea class="form-control-lg col-sm-7" name="address" rows=2 cols="50" placeholder="東京都新宿区西新宿2-8-1"></textarea>
+                      </div>
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">自宅番号</label>
+                          <input type="text" class="form-control-lg col-sm-7" name="telNumber" placeholder="03-5321-1111">
+                      </div>
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">携帯番号</label>
+                          <input type="text" class="form-control-lg col-sm-7" name="phoneNumber" placeholder="090-1234-5555">
+                      </div>
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">時給</label>
+                          <input type="text" class="form-control-lg col-sm-7" name="hourlyWage" placeholder="1013">
+                      </div>
+
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">備考</label>
+                          <textarea class="form-control-lg col-sm-7" name="remarks" rows="3" cols="50"></textarea>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="offset-sm-3 col-sm-7">
+                          <button type="submit" class="btn btn-primary btn-block">新規登録</button>
+                        </div>
+                      </div>
+
+                 
+
+          
+                  </form>
+                </div>
+              </div>
+              <!-- END SUBMIT TICKETS -->
+
+</body>
+</html>

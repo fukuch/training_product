@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>勤怠リスト</title>
+<meta name="viewport"content="initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link href="../css/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/app.min.css" rel="stylesheet" type="text/css" />
+<link href="../plugins/bootstrap-datepicker/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/table.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script>
+        jQuery(function($){
+            $("#data-table").DataTable({
+                pageLength: 50
+            });
+        });
+    </script>
+</head>
+<h1>　勤怠リスト</h1>
+
+<body style="padding-top: 7rem">
+
+    <!-- NAVBAR -->
+<nav class="navbar bg-info navbar-expand fixed-top">
+      <div class="navbar-brand d-none d-lg-block">
+        <a href="#"><i class="material-icons big white">home</i></a>
+      </div>
+      <div class="container-fluid p-0">
+        <button id="tour-fullwidth" type="button" class="btn btn-default btn-toggle-fullwidth"><i class="material-icons big white"></i></button>
+        <div id="navbar-menu">
+             <ul class="nav navbar-nav align-items-center">
+
+ 			<li class="nav-item">
+            	<a class="nav-link menu" href="/members/new">　【社員情報】登録　</a>
+            </li>   
+            
+            <li class="nav-item">
+            	<a class="nav-link menu" href="/attendances/new">　【勤怠情報】登録　</a>
+            </li>      
+          
+            <li class="nav-item">
+            	<a class="nav-link menu" href="/members">　社員リスト　</a>
+            </li>
+            
+			<li class="nav-item">
+            	<a class="nav-link menu" href="/attendances">　勤怠リスト　</a>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </nav>
+    <!-- END NAVBAR -->
+<br>
+<br>
+<!-- FILTER COLUMN -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">【参照・編集・削除】可</h3>
+            </div>
+            <div class="card-body">
+             
+                 <table id="example" border=1 style="width:100%">
+ <thead>
+  <tr>
+     <th></th>
+     <th>勤怠ID</th>
+     <th>社員ID</th>
+     <th>名前</th>
+     <th>勤務区分</th>
+     <th>日付</th>
+     <th>出勤時刻</th>
+     <th>退勤時刻</th>
+     <th>休憩時間(分)</th>
+     <th>備考</th>
+     <th></th>
+     <th></th>
+
+ </tr>
+ </thead>
+ <tbody>  
+     <tr th:each="attendance:${attendances}" th:object="${attendance}">
+     	
+     	 <td class="text-center"><a th:href="@{/attendances/{attendanceId}(attendanceId=${attendance[0]})}"><button type="button" class="btn btn-secondary btn-lg">参照</button></a></td>
+         <td th:text="${attendance[0]}"></td>
+         <td th:text="${attendance[1]}"></td>
+         <td th:text="${attendance[2]}"></td>
+         <td th:text="${attendance[3]}"></td>
+         <td th:text="${attendance[4]}"></td>
+         <td th:text="${attendance[5]}"></td>
+         <td th:text="${attendance[6]}"></td>
+         <td th:text="${attendance[7]}"></td>
+         <td th:text="${attendance[8]}"></td>
+         <td class="text-center"><a th:href="@{/attendances/{/attendanceId}/edit(attendanceId=${attendance[0]})}"><button type="button" class="btn btn-primary btn-lg">編集</button></a></td>
+         <td class="text-center"><a th:href="@{/attendances/{/attendanceId}/delete(attendanceId=${attendance[0]})}"><button type="button" class="btn btn-danger btn-lg" onclick="return confirm('本当に削除しますか？')">削除</button></a></td>
+     </tr>
+	
+ </tbody>
+</table>
+            
+            </div>
+          </div>
+<!-- END FILTER COLUMN -->
+
+</body>
+</html>

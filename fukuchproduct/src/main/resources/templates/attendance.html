@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>勤怠情報@登録</title>
+<meta name="viewport"content="initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link href="../css/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/app.min.css" rel="stylesheet" type="text/css" />
+<link href="../plugins/bootstrap-datepicker/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+</head>
+<h1>　勤怠情報@登録</h1>
+
+<body style="padding-top: 7rem">
+
+    <!-- NAVBAR -->
+<nav class="navbar bg-info navbar-expand fixed-top">
+      <div class="navbar-brand d-none d-lg-block">
+        <a href="#"><i class="material-icons big white">home</i></a>
+      </div>
+      <div class="container-fluid p-0">
+        <button id="tour-fullwidth" type="button" class="btn btn-default btn-toggle-fullwidth"><i class="material-icons big white"></i></button>
+        <div id="navbar-menu">
+             <ul class="nav navbar-nav align-items-center">
+
+ 			<li class="nav-item">
+            	<a class="nav-link menu" href="/members/new">　【社員情報】登録　</a>
+            </li>   
+            
+            <li class="nav-item">
+            	<a class="nav-link menu" href="/attendances/new">　【勤怠情報】登録　</a>
+            </li>      
+          
+            <li class="nav-item">
+            	<a class="nav-link menu" href="/members">　社員リスト　</a>
+            </li>
+            
+			<li class="nav-item">
+            	<a class="nav-link menu" href="/attendances">　勤怠リスト　</a>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </nav>
+    <!-- END NAVBAR -->
+<br>
+<br>
+<!-- SUBMIT TICKETS -->
+              <div class="card col-sm-7 container-fluid">
+                <div class="card-header">
+                  <h2 class="card-title">勤怠情報を入力してください</h2>
+                </div>
+                <div class="card-body">
+                <form th:action="@{/attendances/new}" th:method="post">
+                      
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">名前</label>
+                          <select type="text" class="form-control-lg col-sm-7 custom-select" name="memberId">
+                          <!-- <option value="">社員IDを選択してください</option> -->
+                          <option th:each="member:${members}" th:value="${member.memberId}" th:text="${member.name}"></option>
+                          </select>
+                      </div>
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">勤務区分</label>
+                          <select name="workDivision" class="form-control-lg col-sm-7">
+                            <option value="0">出勤/有給</option>
+                            <option value="出勤">出勤</option>
+                            <option value="有給">有給</option>
+                          </select>
+                      </div>
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">日付</label>
+                          <input type="date" class="form-control-lg col-sm-7" name="date">
+                      </div>
+                     
+                     <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">出勤時刻</label>
+                          <input type="time" class="form-control-lg col-sm-7" name="punchIn" value="00:00">
+                      </div>
+
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">退勤時刻</label>
+                          <input type="time" class="form-control-lg col-sm-7" name="punchOut"value="00:00">
+                      </div>
+
+                        <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">休憩時間</label>
+                          <select name="breakTime" class="form-control-lg col-sm-7">
+                            <option value="0">0分</option>
+                            <option value="10">10分</option>
+                            <option value="20">20分</option>
+                            <option value="30">30分</option>
+                            <option value="40">40分</option>
+                            <option value="50">50分</option>
+                            <option value="60">60分</option>
+                            <option value="70">70分</option>
+                            <option value="80">80分</option>
+                            <option value="90">90分</option>
+                            <option value="100">100分</option>
+
+                          </select>
+                      </div>
+
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">備考</label>
+                          <textarea class="form-control-lg col-sm-7" name="remarks" rows="3" cols="50"></textarea>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="offset-sm-3 col-sm-7">
+                          <button type="submit" class="btn btn-primary btn-block">新規登録</button>
+                        </div>
+                      </div>
+
+          
+                  </form>
+                </div>
+              </div>
+              <!-- END SUBMIT TICKETS -->
+
+</body>
+</html>

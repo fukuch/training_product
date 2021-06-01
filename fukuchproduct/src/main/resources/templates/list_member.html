@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>社員リスト</title>
+<meta name="viewport"content="initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link href="../css/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/app.min.css" rel="stylesheet" type="text/css" />
+<link href="../plugins/bootstrap-datepicker/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/table.js"></script>
+	<script src="../js/dialog.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script>
+        jQuery(function($){
+            $("#data-table").DataTable({
+                pageLength: 50
+            });
+        });
+    </script>
+</head>
+<h1>　社員リスト</h1>
+
+<body style="padding-top: 7rem">
+
+    <!-- NAVBAR -->
+<nav class="navbar bg-info navbar-expand fixed-top">
+      <div class="navbar-brand d-none d-lg-block">
+        <a href="#"><i class="material-icons big white">home</i></a>
+      </div>
+      <div class="container-fluid p-0">
+        <button id="tour-fullwidth" type="button" class="btn btn-default btn-toggle-fullwidth"><i class="material-icons big white"></i></button>
+        <div id="navbar-menu">
+             <ul class="nav navbar-nav align-items-center">
+
+ 			<li class="nav-item">
+            	<a class="nav-link menu" href="/members/new">　【社員情報】登録　</a>
+            </li>   
+            
+            <li class="nav-item">
+            	<a class="nav-link menu" href="/attendances/new">　【勤怠情報】登録　</a>
+            </li>      
+          
+            <li class="nav-item">
+            	<a class="nav-link menu" href="/members">　社員リスト　</a>
+            </li>
+            
+			<li class="nav-item">
+            	<a class="nav-link menu" href="/attendances">　勤怠リスト　</a>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </nav>
+    <!-- END NAVBAR -->
+<br>
+<br>
+<!-- FILTER COLUMN -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">【参照・編集・削除】可</h3>
+            </div>
+            <div class="card-body">
+             
+                <table id="example" border=1 style="width:100%">
+ <thead>
+  <tr>
+  	 <th></th>
+     <th>社員ID</th>
+     <th>名前</th>
+     <th>ふりがな</th> 
+     <th>性別</th>
+     <th>生年月日</th>
+     <th>役職</th>
+     <th>入社日</th>
+     <th>郵便番号</th>
+     <th>住所</th>
+     <th>自宅番号</th>
+     <th>携帯番号</th>
+     <th>時給</th>
+     <th>備考</th>
+     <th></th>
+     <th></th>
+
+ </tr>
+ </thead>
+ <tbody>
+     <div th:each="member:${members}" th:object="${member}">
+     <tr>
+     	 <td class="text-center"><a th:href="@{/members/{memberId}(memberId=*{memberId})}"><button type="button" class="btn btn-secondary btn-lg">参照</button></a></td>
+         <td th:text="*{memberId}"></td>
+         <td th:text="*{name}"></td>
+         <td th:text="*{nameKana}"></td>
+         <td th:text="*{sex}"></td>
+         <td th:text="*{birthday}"></td>
+         <td th:text="*{position}"></td>
+         <td th:text="*{joiningDay}"></td>
+         <td th:text="*{zipcode}"></td>
+         <td th:text="*{address}"></td>
+         <td th:text="*{telNumber}"></td>
+         <td th:text="*{phoneNumber}"></td>
+         <td th:text="*{hourlyWage}"></td>
+         <td th:text="*{remarks}"></td>
+         <td class="text-center"><a th:href="@{/members/{/memberId}/edit(memberId=*{memberId})}"><button type="button" class="btn btn-primary btn-lg">編集</button></a></td>
+		 <td class="text-center"><a th:href="@{/members/{/memberId}/delete(memberId=*{memberId})}"><button type="button" class="btn btn-danger btn-lg" onclick="return confirm('本当に削除しますか？')">削除</button></a></td>
+
+     </tr>
+</div>
+ </tbody>
+</table>
+            
+            </div>
+          </div>
+<!-- END FILTER COLUMN -->
+
+</body>
+</html>

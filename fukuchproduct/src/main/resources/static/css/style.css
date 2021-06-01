@@ -1,34 +1,25 @@
-body {
-  background-color: #F0FFF0;
-}
-
-table,th,td,tr{
-border:1px solid black;
-border-collapse:collapse;
-}
-
-
-table{
-	width: 100%
-}
-
-td{
-	font-size: 300%
-}
-
-.top{
-	font-size: 400%
-}
-
-.name{
-	background-color:#98FB98;
-	font-size:400%;
-}
-
-.right{
-	text-align: right;
-}
-
 .center{
 	text-align: center;
+}
+.right{
+	text-align-last:right;
+}
+.large{
+  font-size:200%;
+}
+
+.big{
+     font-size: 70px; /* サイズの指定 */
+}
+
+.menu{
+     font-size: 25px; /* サイズの指定 */
+}
+
+.white {
+     color: #e6e6e6; /* カラーの指定 */
+}
+
+.orange {
+     color: #faac58; /* カラーの指定 */
 }
