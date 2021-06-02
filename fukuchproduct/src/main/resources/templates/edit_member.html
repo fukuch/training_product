@@ -75,12 +75,16 @@
                                             
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">性別</label>
-                          <input class="form-control-lg col-sm-7" name="sex"  th:field="*{sex}">
+                          <select class="form-control-lg col-sm-7" name="sex"  th:value="*{sex}">
+                          <option th:selected="*{sex}==*{sex}" th:text="*{sex}"></option>
+                          <option value="男">男</option>
+                          <option value="女">女</option>
+                          </select>
                       </div>
 
                      <div class="form-group form-inline">
                         <label class="col-sm-3 large center">生年月日</label>
-                          <input class="form-control-lg col-sm-7" name="birthday"  th:field="*{birthday}">
+                          <input type="date" class="form-control-lg col-sm-7" name="birthday"  th:field="*{birthday}">
                       </div>
 
 
@@ -92,7 +96,7 @@
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">入社日</label>
-                          <input class="form-control-lg col-sm-7" name="join"  th:field="*{joiningDay}">
+                          <input type="date" class="form-control-lg col-sm-7" name="join"  th:field="*{joiningDay}">
                       </div>
 
                       <div class="form-group form-inline">

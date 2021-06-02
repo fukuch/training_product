@@ -56,52 +56,52 @@
                   <h2 class="card-title">※編集不可</h2>
                 </div>
                 <div class="card-body">
-                  <form  th:action="@{/attendances/{attendanceId}(attendanceId=${attendance[0]})}" th:method="post" th:object="${attendance}">
-                      
+                  <form th:action="@{/attendances/{attendanceId}(attendanceId=${attendance[0]})}" th:method="post" th:object="${attendance}"> 
+                  <!-- <form th:action="@{/attendances}" th:method="post"> -->
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">勤怠ID</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="attendanceId" readonly th:field="${attendance[0]}" />
+                          <input type="text" class="form-control-lg col-sm-7" name="attendanceId" disabled th:value="${attendance[0]}" />
                       </div>
                       
-                      <div class="form-group form-inline">
+                     <div class="form-group form-inline">
                         <label class="col-sm-3 large center">社員ID</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="memberId" readonly th:field="${attendance[1]}" />
+                          <input type="text" class="form-control-lg col-sm-7" name="memberId" disabled th:value="${attendance[1]}" />
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">名前</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="name" readonly th:field="${attendance[2]}" />
+                          <input type="text" class="form-control-lg col-sm-7" name="name" disabled th:value="${attendance[2]}" />
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">勤務区分</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="workDivision" readonly th:field="${attendance[3]}" />
+                          <input type="text" class="form-control-lg col-sm-7" name="workDivision" disabled th:value="${attendance[3]}" />
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">日付</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="date" readonly th:field="${attendance[4]}" />
+                          <input type="text" class="form-control-lg col-sm-7" name="date" disabled th:value="${attendance[4]}" />
                       </div>
 
                      <div class="form-group form-inline">
                         <label class="col-sm-3 large center">出勤時刻</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="punchIn" readonly th:field="${attendance[5]}" />
+                          <input type="text" class="form-control-lg col-sm-7" name="punchIn" disabled th:value="${attendance[5]}" />
                       </div>
 
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">退勤時刻</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="punchOut" readonly th:field="*${attendance[6]}" />
+                          <input type="text" class="form-control-lg col-sm-7" name="punchOut" disabled th:value="${attendance[6]}" />
                       </div>
 
                         <div class="form-group form-inline">
                         <label class="col-sm-3 large center">休憩時間(分)</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="breakTime" readonly th:field="${attendance[7]}" />
+                          <input type="text" class="form-control-lg col-sm-7" name="breakTime" disabled th:value="${attendance[7]}" />
                       </div>
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">備考</label>
-                          <textarea class="form-control-lg col-sm-7" name="remarks" rows="3" cols="50" readonly th:field="${attendance[8]}"></textarea>
+                          <textarea class="form-control-lg col-sm-7" name="remarks" rows="3" cols="50" disabled th:value="${attendance[8]}"></textarea>
                       </div>
 
                       <div class="form-group row">

@@ -25,7 +25,7 @@ public class AttendanceService {
 		List<Object[]> list = rep.find();
 		return list;
 	}
-	
+	//詳細
 	public Object findByInnerJoin(Long attendanceId) {
 		return rep.findOne(attendanceId);
 	}

@@ -59,6 +59,8 @@ public class AttendanceController {
 		model.addAttribute("attendance",attendance);
 		return "show_attendance";
 	}*/
+	
+	//詳細
 		@GetMapping("/attendances/{attendanceId}")
 		public String show(@PathVariable Long attendanceId, Model model) {
 			Object attendance = service.findByInnerJoin(attendanceId);
@@ -70,7 +72,7 @@ public class AttendanceController {
 	//更新
 	@GetMapping("/attendances/{attendanceId}/edit")
 		public String edit(@PathVariable Long attendanceId,Model model) {
-			Attendance attendance = service.findOne(attendanceId);
+			Object attendance = service.findByInnerJoin(attendanceId);
 			model.addAttribute("attendance",attendance);
 			return "edit_attendance";
 		}

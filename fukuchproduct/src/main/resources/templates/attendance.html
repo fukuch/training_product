@@ -60,8 +60,8 @@
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">名前</label>
-                          <select type="text" class="form-control-lg col-sm-7 custom-select" name="memberId">
-                          <!-- <option value="">社員IDを選択してください</option> -->
+                          <select type="text" class="form-control-lg col-sm-7" name="memberId">
+                          <option value="">社員名を選択してください</option>
                           <option th:each="member:${members}" th:value="${member.memberId}" th:text="${member.name}"></option>
                           </select>
                       </div>

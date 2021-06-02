@@ -11,6 +11,9 @@
 .big{
      font-size: 70px; /* サイズの指定 */
 }
+.bg{
+	font-weight:  bold;
+}
 
 .menu{
      font-size: 25px; /* サイズの指定 */

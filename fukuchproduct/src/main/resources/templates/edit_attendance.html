@@ -56,47 +56,56 @@
                   <h2 class="card-title">※変更する場所を指定して入力してください</h2>
                 </div>
                 <div class="card-body">
-                  <form  th:action="@{/attendances/{attendanceId}(attendanceId=*{attendanceId})}" th:method="post" th:object="${attendance}">
+                  <form  th:action="@{/attendances/{attendanceId}(attendanceId=${attendance[0]})}" th:method="post" th:object="${attendance}">
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">※勤怠ID</label>
-                          <input type="text" class="form-control-lg col-sm-7 bg-secondary text-light" name="attendanceId" readonly th:field="*{attendanceId}" />
+                          <input type="text" class="form-control-lg col-sm-7 bg-secondary text-light" name="attendanceId" readonly th:value="${attendance[0]}" />
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">※社員ID</label>
-                          <input type="text" class="form-control-lg col-sm-7 bg-secondary text-light" name="memberId" readonly th:field="*{memberId}" />
+                          <input type="text" class="form-control-lg col-sm-7 bg-secondary text-light" name="memberId" readonly th:value="${attendance[1]}" />
+                      </div>
+                      
+                      <div class="form-group form-inline">
+                        <label class="col-sm-3 large center">※名前</label>
+                          <input type="text" class="form-control-lg col-sm-7 bg-secondary text-light" name="name" readonly th:value="${attendance[2]}" />
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">勤務区分</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="workDivision" th:field="*{workDivision}" />
+                          <select  class="form-control-lg col-sm-7" name="workDivision" th:value="${attendance[3]}">
+                          <option th:selected="${attendance[3]} == ${attendance[3]}" th:text="${attendance[3]}"></option>
+                          <option value="出勤">出勤</option>
+                          <option value="有給">有給</option>
+                          </select>
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">日付</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="date" th:field="*{date}" />
+                          <input type="date" class="form-control-lg col-sm-7" name="date" th:value="${attendance[4]}" />
                       </div>
 
                      <div class="form-group form-inline">
                         <label class="col-sm-3 large center">出勤時刻</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="punchIn" th:field="*{punchIn}" />
+                          <input type="time" class="form-control-lg col-sm-7" name="punchIn" th:value="${attendance[5]}" />
                       </div>
 
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">退勤時刻</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="punchOut" th:field="*{punchOut}" />
+                          <input type="time" class="form-control-lg col-sm-7" name="punchOut" th:value="${attendance[6]}" />
                       </div>
 
                         <div class="form-group form-inline">
                         <label class="col-sm-3 large center">休憩時間(分)</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="breakTime" th:field="*{breakTime}" />
+                          <input type="text" class="form-control-lg col-sm-7" name="breakTime" th:value="${attendance[7]}" />
                       </div>
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">備考</label>
-                          <textarea type="text" class="form-control-lg col-sm-7" name="remarks" rows="3" cols="50" th:field="*{remarks}" />
+                          <textarea type="text" class="form-control-lg col-sm-7" name="remarks" rows="3" cols="50" th:value="${attendance[8]}" ></textarea>
                       </div>
 
                       <div class="form-group row">
