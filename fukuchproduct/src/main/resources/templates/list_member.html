@@ -14,14 +14,14 @@
 	<script src="../js/popper.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/table.js"></script>
-	<script src="../js/dialog.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    
+	
+	<link rel="stylesheet" type="text/css" href="../css/datatables.min.css"/>
+    <script src="../js/import/datatables.min.js"></script>
+	<script src="../js/import/jszip.min.js"></script>
+	<script src="../js/import/pdfmake.min.js"></script>
+	<script src="../js/import/vfs_fonts.js"></script>
+	<script src="../js/import/buttons.html5.min.js"></script>
+	<script src="../js/import/buttons.print.min.js"></script>
 </head>
 <h1>　社員リスト</h1>
 
@@ -61,14 +61,14 @@
 <br>
 <!-- FILTER COLUMN -->
           <div class="card">
-            <div class="card-header">
+            <div id="button" class="card-header">
               <h3 class="card-title">【参照・編集・削除】可</h3>
             </div>
             <div class="card-body">
              
                 <table id="list" border=2 style="width:100%">
- <thead>
-  <tr>
+ <thead bgColor=#FFEBCD>
+  <tr style="font-size: 8pt;">
   	 <th></th>
      <th>社員ID</th>
      <th>名前</th>
@@ -88,25 +88,26 @@
 
  </tr>
  </thead>
- <tbody>
+ <tbod>
      <div th:each="member:${members}" th:object="${member}">
      <tr>
-     	 <td class="text-center"><a th:href="@{/members/{memberId}(memberId=*{memberId})}"><button type="button" class="btn btn-secondary btn-lg">参照</button></a></td>
-         <td th:text="*{memberId}"></td>
+     	 <!-- <td class="text-center"><a th:href="@{/members/{memberId}(memberId=*{memberId})}"><button type="button" class="btn btn-secondary btn-lg">参照</button></a></td> -->
+     	 <td style="width:64px;" class="text-center"><a th:href="@{/members/{memberId}(memberId=*{memberId})}" class="btn_s"><span>参照</span></a></td>
+         <td style="width:54px;" th:text="*{memberId}"></td>
          <td th:text="*{name}"></td>
          <td th:text="*{nameKana}"></td>
-         <td th:text="*{sex}"></td>
-         <td th:text="*{birthday}"></td>
+         <td style="width:45px;" th:text="*{sex}"></td>
+         <td style="width:85px;" th:text="*{birthday}"></td>
          <td th:text="*{position}"></td>
-         <td th:text="*{joiningDay}"></td>
-         <td th:text="*{zipcode}"></td>
+         <td style="width:85px;" th:text="*{joiningDay}"></td>
+         <td style="width:74px;" th:text="*{zipcode}"></td>
          <td th:text="*{address}"></td>
          <td th:text="*{telNumber}"></td>
          <td th:text="*{phoneNumber}"></td>
          <td th:text="*{hourlyWage}"></td>
          <td th:text="*{remarks}"></td>
-         <td class="text-center"><a th:href="@{/members/{/memberId}/edit(memberId=*{memberId})}"><button type="button" class="btn btn-primary btn-lg">編集</button></a></td>
-		 <td class="text-center"><a th:href="@{/members/{/memberId}/delete(memberId=*{memberId})}"><button type="button" class="btn btn-danger btn-lg" onclick="return confirm('本当に削除しますか？')">削除</button></a></td>
+         <td style="width:64px;" class="text-center"><a th:href="@{/members/{/memberId}/edit(memberId=*{memberId})}" class="btn_e"><span>編集</span></a></td>
+		 <td style="width:64px;" class="text-center"><a th:href="@{/members/{/memberId}/delete(memberId=*{memberId})}" class="btn_d"><span onclick="return confirm('本当に削除しますか？')">削除</span></a></td>
 
      </tr>
 </div>

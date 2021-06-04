@@ -14,12 +14,16 @@
 	<script src="../js/popper.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/table.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/datatables.min.css"/>
+    <script src="../js/import/datatables.min.js"></script>
+	<script src="../js/import/jszip.min.js"></script>
+	<script src="../js/import/pdfmake.min.js"></script>
+	<script src="../js/import/vfs_fonts.js"></script>
+	<script src="../js/import/buttons.html5.min.js"></script>
+	<script src="../js/import/buttons.print.min.js"></script>
+
+    
     
 </head>
 <h1>　勤怠リスト</h1>
@@ -65,9 +69,10 @@
             </div>
             <div class="card-body">
              
+                 
                  <table id="list" border=2 style="width:100%">
- <thead>
-  <tr>
+ <thead border=1 bgColor=#E0FFFF>
+  <tr style="font-size: 12pt;">
      <th></th>
      <th>勤怠ID</th>
      <th>社員ID</th>
@@ -84,23 +89,25 @@
  </tr>
  </thead>
  <tbody>  
-     <tr th:each="attendance:${attendances}" th:object="${attendance}">
+      <tr th:each="attendance:${attendances}" th:object="${attendance}"  style="font-size: 20pt;">
      	
-     	 <td class="text-center"><a th:href="@{/attendances/{attendanceId}(attendanceId=${attendance[0]})}"><button type="button" class="btn btn-secondary btn-lg">参照</button></a></td>
-         <td th:text="${attendance[0]}"></td>
-         <td th:text="${attendance[1]}"></td>
+     	 <!-- <td class="text-center"><a th:href="@{/attendances/{attendanceId}(attendanceId=${attendance[0]})}"><button type="button" class="btn btn-secondary btn-lg">参照</button></a></td> -->
+         <td style="width:64px;" class="text-center"><a th:href="@{/attendances/{attendanceId}(attendanceId=${attendance[0]})}" class="btn_s"><span>参照</span></a></td>
+         <td style="width:68px;" th:text="${attendance[0]}"></td>
+         <td style="width:68px;" th:text="${attendance[1]}"></td>
          <td th:text="${attendance[2]}"></td>
          <td th:text="${attendance[3]}"></td>
          <td th:text="${attendance[4]}"></td>
-         <td th:text="${attendance[5]}"></td>
-         <td th:text="${attendance[6]}"></td>
+         <td style="width:79px;" th:text="${attendance[5]}"></td>
+         <td style="width:79px;" th:text="${attendance[6]}"></td>
          <td th:text="${attendance[7]}"></td>
          <td th:text="${attendance[8]}"></td>
-         <td class="text-center"><a th:href="@{/attendances/{/attendanceId}/edit(attendanceId=${attendance[0]})}"><button type="button" class="btn btn-primary btn-lg">編集</button></a></td>
-         <td class="text-center"><a th:href="@{/attendances/{/attendanceId}/delete(attendanceId=${attendance[0]})}"><button type="button" class="btn btn-danger btn-lg" onclick="return confirm('本当に削除しますか？')">削除</button></a></td>
+         <td style="width:64px;" class="text-center"><a th:href="@{/attendances/{/attendanceId}/edit(attendanceId=${attendance[0]})}" class="btn_e"><span>編集</span></a></td>
+         <td style="width:64px;" class="text-center"><a th:href="@{/attendances/{/attendanceId}/delete(attendanceId=${attendance[0]})}" class="btn_d"><span onclick="return confirm('本当に削除しますか？')">削除</span></a></td>
      </tr>
-	
+
  </tbody>
+ 
 </table>
             
             </div>

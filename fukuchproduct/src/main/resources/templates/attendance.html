@@ -59,8 +59,8 @@
                 <form th:action="@{/attendances/new}" th:method="post">
                       
                       <div class="form-group form-inline">
-                        <label class="col-sm-3 large center">名前</label>
-                          <select type="text" class="form-control-lg col-sm-7" name="memberId">
+                        <label class="col-sm-3 large center required">名前</label>
+                          <select type="text" class="form-control-lg col-sm-7" name="memberId" required>
                           <option value="">社員名を選択してください</option>
                           <option th:each="member:${members}" th:value="${member.memberId}" th:text="${member.name}"></option>
                           </select>
@@ -114,7 +114,7 @@
 
                       <div class="form-group row">
                         <div class="offset-sm-3 col-sm-7">
-                          <button type="submit" class="btn btn-primary btn-block">新規登録</button>
+                          <button type="submit" class="btn btn-primary btn-block" onclick="alert('登録しました')">新規登録</button>
                         </div>
                       </div>
 
