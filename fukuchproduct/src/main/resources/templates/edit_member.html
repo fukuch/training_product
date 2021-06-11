@@ -21,7 +21,7 @@
     <!-- NAVBAR -->
 <nav class="navbar bg-info navbar-expand fixed-top">
       <div class="navbar-brand d-none d-lg-block">
-        <a href="#"><i class="material-icons big white">home</i></a>
+        <a href="/login"><i class="material-icons big white">home</i></a>
       </div>
       <div class="container-fluid p-0">
         <button id="tour-fullwidth" type="button" class="btn btn-default btn-toggle-fullwidth"><i class="material-icons big white"></i></button>
@@ -65,12 +65,12 @@
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">名前</label>
-                          <input class="form-control-lg col-sm-7" name="name"  th:field="*{name}">
+                          <input class="form-control-lg col-sm-7 bg-secondary text-light" name="name" readonly th:field="*{name}">
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">ふりがな</label>
-                          <input class="form-control-lg col-sm-7" name="nameKana"  th:field="*{nameKana}">
+                          <input class="form-control-lg col-sm-7 bg-secondary text-light" name="nameKana" readonly th:field="*{nameKana}">
                       </div>
                                             
                       <div class="form-group form-inline">

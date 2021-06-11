@@ -51,15 +51,7 @@ public class AttendanceController {
 		model.addAttribute("attendances",attendances);
 		return "list_attendance";
 	}
-	
-	//詳細
-	/*@GetMapping("/attendances/{attendanceId}")
-	public String list(@PathVariable Long attendanceId, Model model) {
-		Attendance attendance = service.findOne(attendanceId);
-		model.addAttribute("attendance",attendance);
-		return "show_attendance";
-	}*/
-	
+		
 	//詳細
 		@GetMapping("/attendances/{attendanceId}")
 		public String show(@PathVariable Long attendanceId, Model model) {
@@ -76,6 +68,7 @@ public class AttendanceController {
 			model.addAttribute("attendance",attendance);
 			return "edit_attendance";
 		}
+	
 	//更新
 		@PostMapping("/attendances/{attendanceId}")
 		public String update(@PathVariable Long attendanceId, @ModelAttribute Attendance attendance) {

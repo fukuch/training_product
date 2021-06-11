@@ -10,6 +10,8 @@
 <link href="../css/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
 <link href="../css/app.min.css" rel="stylesheet" type="text/css" />
 <link href="../plugins/bootstrap-datepicker/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+	<script src="../js/kana.js"></script>
+	<script src="../js/jquery.autoKana.js"></script>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/popper.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
@@ -21,7 +23,7 @@
     <!-- NAVBAR -->
 <nav class="navbar bg-info navbar-expand fixed-top">
       <div class="navbar-brand d-none d-lg-block">
-        <a href="#"><i class="material-icons big white">home</i></a>
+        <a href="/login"><i class="material-icons big white">home</i></a>
       </div>
       <div class="container-fluid p-0">
         <button id="tour-fullwidth" type="button" class="btn btn-default btn-toggle-fullwidth"><i class="material-icons big white"></i></button>
@@ -61,18 +63,18 @@
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center required">名前</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="name" placeholder="山田太郎" required>
+                          <input type="text" class="form-control-lg col-sm-7" name="name" id="name" placeholder="山田太郎" required>
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">ふりがな</label>
-                          <input type="text" class="form-control-lg col-sm-7" name="nameKana" placeholder="やまだたろう">
+                          <input type="text" class="form-control-lg col-sm-7" name="nameKana" id="nameKana" placeholder="やまだたろう">
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">性別</label>
                           <select name="sex" class="form-control-lg col-sm-7" >
-                            <option value="">性別</option>
+                            <option value disabled selected>性別</option>
                             <option value="男">男性</option>
                             <option value="女">女性</option>
                           </select>

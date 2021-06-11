@@ -45,7 +45,7 @@ public class PlayerController {
         return "show";
     }
 	@GetMapping("/players/{id}/edit")
-    public String edit(@PathVariable Long id, Model model) { // �D
+    public String edit(@PathVariable Long id, Model model) {
         Player player = service.findOne(id);
         model.addAttribute("player", player);
         return "edit";

@@ -30,7 +30,7 @@
     <!-- NAVBAR -->
 <nav class="navbar bg-info navbar-expand fixed-top">
       <div class="navbar-brand d-none d-lg-block">
-        <a href="#"><i class="material-icons big white">home</i></a>
+        <a href="/login"><i class="material-icons big white">home</i></a>
       </div>
       <div class="container-fluid p-0">
         <button id="tour-fullwidth" type="button" class="btn btn-default btn-toggle-fullwidth"><i class="material-icons big white"></i></button>
@@ -88,7 +88,7 @@
 
  </tr>
  </thead>
- <tbod>
+ <tbody>
      <div th:each="member:${members}" th:object="${member}">
      <tr>
      	 <!-- <td class="text-center"><a th:href="@{/members/{memberId}(memberId=*{memberId})}"><button type="button" class="btn btn-secondary btn-lg">参照</button></a></td> -->

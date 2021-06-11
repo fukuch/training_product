@@ -1,12 +1,33 @@
 body{
-   background: url(http://www.timurtek.com/wp-content/uploads/2014/10/form-bg.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   font-family:'HelveticaNeue','Arial', sans-serif;
-
 }
+.red{
+	color: #da4033;
+	font-weight:bold;
+}
+.message {
+    position: relative;
+    border: 4px dashed #da4033;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 20px 20px 20px 20px;
+    text-align:center;
+}
+.message::before {
+    content: "ERROR";
+    position: absolute;
+    background-color: #fff;
+    color: #da4033;
+    font-weight: bold;
+    left: 20px;
+    top: -23px;
+    padding: 10px;
+}
+
 a{color:#58bff6;text-decoration: none;}
 a:hover{color:#aaa; }
 .pull-right{float: right;}
@@ -30,17 +51,16 @@ div.logo svg{
 
 div#form{
   position: absolute;
-  width:360px;
-  height:320px;
+  width:600px;
   height:auto;
   background-color: #fff;
   margin:auto;
   border-radius: 5px;
   padding:20px;
-  left:50%;
-  top:50%;
-  margin-left:-180px;
-  margin-top:-200px;
+  left:0;
+  right:0;
+  top:0;
+  bottom: 0;
 }
 div.form-item{position: relative; display: block; margin-bottom: 20px;}
  input{transition: all .2s ease;}
@@ -90,6 +110,8 @@ input[type="submit"].login{
 input[type="submit"].login:hover{background-color: #fff; border:1px solid #55b1df; color:#55b1df; cursor:pointer;}
 input[type="submit"].login:focus{outline: none;}
 
-.log_big{
-     font-size: 150px; /* サイズの指定 */
+.log{
+     font-size: 250px; /* サイズの指定 */
+     text-align: center;
+     color: rgba(0, 0, 0, 0.26);
 }

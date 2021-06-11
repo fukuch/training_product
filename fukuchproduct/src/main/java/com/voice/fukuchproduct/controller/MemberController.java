@@ -17,11 +17,22 @@ import com.voice.fukuchproduct.service.MemberService;
 public class MemberController {
 	@Autowired
 	private MemberService service;
+	
+	//ajax
+	//member_id呼び出し
+		@GetMapping("/Ajax/test")
+		public String newAjax(Model model) {
+			List<Member> members = service.findAll();
+			System.out.println("members");
+			model.addAttribute("members",members);
+			return "ajax";
+		}
+	
 	//新規登録
 	@GetMapping("/members/new")
 	public String newMember(Model model) {
 		return "member";
-	}
+	}	
 	//新規登録
 	@PostMapping("/members/new")
 	public String create(@ModelAttribute Member member) {

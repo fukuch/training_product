@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>社員情報@参照</title>
+<title>社員情報@登録</title>
 <meta name="viewport"content="initial-scale=1">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../css/style.css" rel="stylesheet" type="text/css" />
@@ -10,11 +10,13 @@
 <link href="../css/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
 <link href="../css/app.min.css" rel="stylesheet" type="text/css" />
 <link href="../plugins/bootstrap-datepicker/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+	<script src="../js/kana.js"></script>
+	<script src="../js/jquery.autoKana.js"></script>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/popper.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 </head>
-<h1>　社員情報@参照</h1>
+<h1>　社員情報@登録</h1>
 
 <body style="padding-top: 7rem">
 
@@ -53,97 +55,132 @@
 <!-- SUBMIT TICKETS -->
               <div class="card col-sm-7 container-fluid">
                 <div class="card-header">
-                  <h2 class="card-title">※編集不可</h2>
+                  <h2 class="card-title">記入例に従って入力してください</h2>
                 </div>
                 <div class="card-body">
-                  <form  th:object="${member}">
+                <form th:action="@{/members/new}" th:method="post">
+                 
                       
                       <div class="form-group form-inline">
-                        <label class="col-sm-3 large center">社員ID</label>
-                          <input class="form-control-lg col-sm-7" name="memberId" disabled th:field="*{memberId}">
-                      </div>
-                      
-                      <div class="form-group form-inline">
-                        <label class="col-sm-3 large center">名前</label>
-                          <input class="form-control-lg col-sm-7" name="name" disabled th:field="*{name}">
+                        <label class="col-sm-3 large center required">名前</label>
+                          <select type="text" class="form-control-lg col-sm-7" name="name" id="name" placeholder="山田太郎" required>
+                          <option value disabled selected>社員名を選択してください</option>
+                          <option th:each="member:${members}" th:value="${member.memberId}" th:text="${member.name}"></option>
+                          </select>
                       </div>
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">ふりがな</label>
-                          <input class="form-control-lg col-sm-7" name="nameKana" disabled th:field="*{nameKana}">
+                          <input type="text" class="form-control-lg col-sm-7" name="nameKana" id="nameKana" placeholder="やまだたろう">
                       </div>
-                                            
+                      
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">性別</label>
-                          <input class="form-control-lg col-sm-7" name="sex" disabled th:field="*{sex}">
+                          <select name="sex" id="sex" class="form-control-lg col-sm-7" >
+                            <option value disabled selected>性別</option>
+                            <option value="男">男性</option>
+                            <option value="女">女性</option>
+                          </select>
                       </div>
 
                      <div class="form-group form-inline">
                         <label class="col-sm-3 large center">生年月日</label>
-                          <input class="form-control-lg col-sm-7" name="birthday" disabled th:field="*{birthday}">
+                          <input type="date" class="form-control-lg col-sm-7" name="birthday" id="birthday">
                       </div>
 
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">役職</label>
-                          <input class="form-control-lg col-sm-7" name="position" disabled th:field="*{position}"></p>
+                          <input type="text" class="form-control-lg col-sm-7" name="position" id="position"placeholder="役職">
                       </div>
 
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">入社日</label>
-                          <input class="form-control-lg col-sm-7" name="join" disabled th:field="*{joiningDay}">
+                          <input type="date" class="form-control-lg col-sm-7" name="joiningDay" id="joiningDay">
                       </div>
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">郵便番号</label>
-                          <input class="form-control-lg col-sm-7" name="zipcode" disabled th:field="*{zipcode}">
+                          <input type="text" class="form-control-lg col-sm-7" name="zipcode" id="zipcode"placeholder="163-8001">
                       </div>
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">住所</label>
-                          <textarea class="form-control-lg col-sm-7" name="address" rows=2 cols="50" disabled th:field="*{address}"></textarea>
+                          <textarea class="form-control-lg col-sm-7" name="address" id="address" rows=2 cols="50" placeholder="東京都新宿区西新宿2-8-1"></textarea>
                       </div>
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">自宅番号</label>
-                          <input class="form-control-lg col-sm-7" name="telNumber" disabled th:field="*{telNumber}">
+                          <input type="text" class="form-control-lg col-sm-7" name="telNumber" id="telNumber" placeholder="03-5321-1111">
                       </div>
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">携帯番号</label>
-                          <input class="form-control-lg col-sm-7" name="phoneNumber" disabled th:field="*{phoneNumber}">
+                          <input type="text" class="form-control-lg col-sm-7" name="phoneNumber" id="phoneNumber" placeholder="090-1234-5555">
                       </div>
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">時給</label>
-                          <input class="form-control-lg col-sm-7" name="hourlyWage" disabled th:field="*{hourlyWage}">
+                          <input type="text" class="form-control-lg col-sm-7" name="hourlyWage" id="hourlyWage" placeholder="1013">
                       </div>
+
 
                       <div class="form-group form-inline">
-                        <label for="ticket-message" class="col-sm-3 large center">備考</label>
-                          <textarea class="form-control-lg col-sm-7" name="remarks" rows="3" cols="50" disabled th:field="*{remarks}"></textarea>
+                        <label class="col-sm-3 large center">備考</label>
+                          <textarea class="form-control-lg col-sm-7" name="remarks" id="remarks" rows="3" cols="50"></textarea>
                       </div>
 
-                      <div class="form-group ">
+                      <div class="form-group row">
                         <div class="offset-sm-3 col-sm-7">
-                        <a th:href="@{/members/{/memberId}/edit(memberId=*{memberId})}"><button type="button" class="btn btn-secondary btn-block">編集</button></a>
+                          <button type="submit" class="btn btn-primary btn-block" onclick="alert('登録しました')">新規登録</button>
                         </div>
-                        
-                      <br>
-                        
-                        <div class="form-group">
-                        <div class="offset-sm-3 col-sm-7">
-                          <a href="/members"><button type="button" class="btn btn-primary btn-block">戻る</button></a>
-                        </div>  
-                      
                       </div>
+
+                 
 
           
                   </form>
                 </div>
               </div>
               <!-- END SUBMIT TICKETS -->
-
+              
+              <!-- Ajax -->
+		<script th:inline="javascript">
+	  		$(document).ready(function(){
+	  			$("#name").change(function(){
+	  				getInfo();
+		  			/* id =$("#name").val();
+		  			alert(id); */	  				
+		  		})
+		  		function getInfo(){
+	  				id =$("#name").val();
+			  		urlString ="http://localhost:8081/Ajax/test/"+ id;
+			  		$.ajax({method:"GET", url: urlString})
+		  			.done (function(result){
+		  				
+		  				$("#nameKana").val(result.nameKana).text(result.nameKana);
+		  				
+		  				$("#sex").val(result.sex);
+		  				
+		  				$("#birthday").val(result.birthday).text(result.birthday);
+		  				$("#position").val(result.position).text(result.position);
+		  				$("#joiningDay").val(result.joiningDay).text(result.joiningDay);
+		  				$("#zipcode").val(result.zipcode).text(result.zipcode);
+		  				$("#address").val(result.address).text(result.address);
+		  				$("#telNumber").val(result.telNumber).text(result.telNumber);
+		  				$("#phoneNumber").val(result.phoneNumber).text(result.phoneNumber);
+		  				$("#hourlyWage").val(result.hourlyWage).text(result.hourlyWage);
+		  				$("#remarks").val(result.remarks).text(result.remarks);
+		  				
+		  				//alert(result);
+		  			})
+		  			.fail(function (){	
+		  				alert("error connecting to the server");
+		  			})
+	  			}
+		  	})
+	  		
+	  	</script>
 </body>
 </html>

@@ -21,7 +21,7 @@
     <!-- NAVBAR -->
 <nav class="navbar bg-info navbar-expand fixed-top">
       <div class="navbar-brand d-none d-lg-block">
-        <a href="#"><i class="material-icons big white">home</i></a>
+        <a href="/login"><i class="material-icons big white">home</i></a>
       </div>
       <div class="container-fluid p-0">
         <button id="tour-fullwidth" type="button" class="btn btn-default btn-toggle-fullwidth"><i class="material-icons big white"></i></button>
@@ -61,15 +61,17 @@
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center required">名前</label>
                           <select type="text" class="form-control-lg col-sm-7" name="memberId" required>
-                          <option value="">社員名を選択してください</option>
+                          <option value disabled selected>社員名を選択してください</option>
                           <option th:each="member:${members}" th:value="${member.memberId}" th:text="${member.name}"></option>
                           </select>
                       </div>
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">勤務区分</label>
                           <select name="workDivision" class="form-control-lg col-sm-7">
-                            <option value="0">出勤/有給</option>
+                            <option value disabled selected>勤務区分を選択してください</option>
                             <option value="出勤">出勤</option>
+                            <option value="欠勤">欠勤</option>
+                            <option value="遅刻/早退">遅刻/早退</option>
                             <option value="有給">有給</option>
                           </select>
                       </div>
@@ -80,18 +82,19 @@
                      
                      <div class="form-group form-inline">
                         <label class="col-sm-3 large center">出勤時刻</label>
-                          <input type="time" class="form-control-lg col-sm-7" name="punchIn" value="00:00">
+                          <input type="time" class="form-control-lg col-sm-7" name="punchIn">
                       </div>
 
 
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center">退勤時刻</label>
-                          <input type="time" class="form-control-lg col-sm-7" name="punchOut"value="00:00">
+                          <input type="time" class="form-control-lg col-sm-7" name="punchOut">
                       </div>
 
                         <div class="form-group form-inline">
                         <label class="col-sm-3 large center">休憩時間</label>
                           <select name="breakTime" class="form-control-lg col-sm-7">
+                          	<option value disabled selected>休憩時間を選択してください</option>
                             <option value="0">0分</option>
                             <option value="10">10分</option>
                             <option value="20">20分</option>
