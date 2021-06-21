@@ -56,7 +56,7 @@
                   <h2 class="card-title">勤怠情報を入力してください</h2>
                 </div>
                 <div class="card-body">
-                <form th:action="@{/attendances/new}" th:method="post">
+                <form th:action="@{/attendances/new}" th:method="post" onsubmit="alert('勤怠情報を1件登録しました');return true;">
                       
                       <div class="form-group form-inline">
                         <label class="col-sm-3 large center required">名前</label>
@@ -117,7 +117,7 @@
 
                       <div class="form-group row">
                         <div class="offset-sm-3 col-sm-7">
-                          <button type="submit" class="btn btn-primary btn-block" onclick="alert('登録しました')">新規登録</button>
+                          <button type="submit" class="btn btn-primary btn-block">新規登録</button>
                         </div>
                       </div>
 

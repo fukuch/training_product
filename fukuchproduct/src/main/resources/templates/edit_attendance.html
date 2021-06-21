@@ -78,6 +78,8 @@
                           <select  class="form-control-lg col-sm-7" name="workDivision" th:value="${attendance[3]}">
                           <option th:selected="${attendance[3]} == ${attendance[3]}" th:text="${attendance[3]}"></option>
                           <option value="出勤">出勤</option>
+                          <option value="欠勤">欠勤</option>
+                          <option value="遅刻/早退">遅刻/早退</option>
                           <option value="有給">有給</option>
                           </select>
                       </div>

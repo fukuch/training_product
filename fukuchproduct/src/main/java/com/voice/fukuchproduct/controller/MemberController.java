@@ -42,14 +42,14 @@ public class MemberController {
 	}
 	//リスト
 	@GetMapping("/members")
-	public String index(Model model) {
+	public String list(Model model) {
 		List<Member> members = service.findAll();
 		model.addAttribute("members",members);
 		return "list_member";
 	}
 	//詳細
 		@GetMapping("/members/{memberId}")
-		public String list(@PathVariable Long memberId, Model model) {
+		public String show(@PathVariable Long memberId, Model model) {
 			Member member = service.findOne(memberId);
 			model.addAttribute("member",member);
 			return "show_member";
